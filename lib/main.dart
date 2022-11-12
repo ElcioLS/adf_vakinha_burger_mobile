@@ -1,4 +1,4 @@
-import 'package:adf_vakinha_burger_mobile/app/code/ui/vakinha_ui.dart';
+import 'package:adf_vakinha_burger_mobile/app/core/ui/vakinha_ui.dart';
 import 'package:adf_vakinha_burger_mobile/app/routes/splash_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
