@@ -33,9 +33,13 @@ class SplashPage extends StatelessWidget {
                     Image.asset('assets/images/logo.png'),
                     const SizedBox(height: 40),
                     VakinhaButton(
-                        label: 'ACESSAR',
-                        width: context.widthTransformer(reducedBy: 40),
-                        onPressed: () {}),
+                      label: 'ACESSAR',
+                      width: context.widthTransformer(reducedBy: 40),
+                      height: 35,
+                      onPressed: () {
+                        Get.toNamed('/auth/login');
+                      },
+                    ),
                   ],
                 ),
               )
