@@ -48,16 +48,13 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+  get_storage: ^2.0.3
+  validatorless: ^1.2.3
+  intl: ^0.17.0
 
-# For information on the generic Dart part of this file, see the
-# following page: https://dart.dev/tools/pub/pubspec
 
-# The following section is specific to Flutter packages.
 flutter:
 
-  # The following line ensures that the Material Icons font is
-  # included with your application, so that you can use the icons in
-  # the material Icons class.
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
@@ -69,11 +66,11 @@ flutter:
   fonts:
     - family: mplus1
       fonts:
-        - asset: fonts/mplus1/MPLUS1p-Regular.ttf
+        - asset: assets/fonts/mplus1/MPLUS1p-Regular.ttf
           style: normal
-        - asset: fonts/mplus1/MPLUS1p-Medium.ttf
+        - asset: assets/fonts/mplus1/MPLUS1p-Medium.ttf
           weight: 500
-        - asset: fonts/mplus1/MPLUS1p-Bold.ttf
+        - asset: assets/fonts/mplus1/MPLUS1p-Bold.ttf
           weight: 700
-        - asset: fonts/mplus1/MPLUS1p-ExtraBold.ttf
+        - asset: assets/fonts/mplus1/MPLUS1p-ExtraBold.ttf
           weight: 800
