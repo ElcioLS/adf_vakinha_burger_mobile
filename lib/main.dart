@@ -1,3 +1,4 @@
+import 'package:adf_vakinha_burger_mobile/app/core/bindings/application_binding.dart';
 import 'package:adf_vakinha_burger_mobile/app/core/ui/vakinha_ui.dart';
 import 'package:adf_vakinha_burger_mobile/app/routes/splash_routers.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Vakinha Burger',
       theme: VakinhaUI.theme,
+      initialBinding: ApplicationBinding(),
       getPages: [
         ...SplashRouters.routers,
         ...AuthRouters.routers,

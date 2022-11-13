@@ -1,3 +1,4 @@
+import 'package:adf_vakinha_burger_mobile/app/modules/register/register_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -48,7 +49,9 @@ class RegisterPage extends StatelessWidget {
                       // width: context.width,
                       width: double.infinity,
                       label: 'CADASTRAR',
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.find<RegisterController>().qualquer();
+                      },
                     ),
                   ),
                 ],
