@@ -6,6 +6,7 @@ class UserModel {
   final String name;
   final String email;
   final String password;
+
   UserModel({
     required this.id,
     required this.name,
@@ -24,10 +25,10 @@ class UserModel {
 
   factory UserModel.fromMap(Map<String, dynamic> map) {
     return UserModel(
-      id: map['id'] as int,
-      name: map['name'] as String,
-      email: map['email'] as String,
-      password: map['password'] as String,
+      id: map['id'],
+      name: map['name'] ?? '',
+      email: map['email'] ?? '',
+      password: map['password'] ?? '',
     );
   }
 
