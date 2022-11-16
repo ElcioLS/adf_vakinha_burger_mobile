@@ -35,8 +35,9 @@ class RegisterController extends GetxController
       await _authRepository.register(name, email, password);
       _loading.toggle();
 
-      final userLogged = await _authRepository.login(email, password);
+      // GetStorage().write(Constants.USER_KEY, userLogged.id); //linha da aula tive que modificar
 
+      final userLogged = await _authRepository.login(email, password);
       final storage = GetStorage();
       storage.write(Constants.USER_KEY, userLogged.id);
 

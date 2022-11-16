@@ -1,4 +1,4 @@
-import 'package:adf_vakinha_burger_mobile/app/core/services/auth_service.dart';
+import 'package:adf_vakinha_burger_mobile/app/core/ui/widgets/vakinha_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -10,21 +10,32 @@ class HomePage extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('HomePage'),
-      ),
-      body: Center(
-          child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          ElevatedButton(
-              onPressed: () {
-                Get.find<AuthService>().logout();
-              },
-              child: const Text('Logout'))
+      appBar: VakinhaAppBar(),
+      bottomNavigationBar: BottomNavigationBar(
+        onTap: (value) {},
+        currentIndex: 0,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.list,
+            ),
+            label: 'Produtos',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.shopping_cart,
+            ),
+            label: 'Carrinho',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.exit_to_app,
+            ),
+            label: 'Sair',
+          ),
         ],
-      )),
+      ),
+      body: Container(),
     );
   }
 }
