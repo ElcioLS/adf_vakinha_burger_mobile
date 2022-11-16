@@ -1,8 +1,13 @@
 import 'package:adf_vakinha_burger_mobile/app/core/ui/vakinha_ui.dart';
 import 'package:flutter/material.dart';
 
+import '../../../core/ui/formatter_helper.dart';
+import '../../../models/product_model.dart';
+
 class ProductTile extends StatelessWidget {
-  const ProductTile({Key? key}) : super(key: key);
+  final ProductModel product;
+
+  const ProductTile({Key? key, required this.product}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,15 +20,14 @@ class ProductTile extends StatelessWidget {
           children: [
             Container(
               width: 80,
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.only(
+              decoration: BoxDecoration(
+                borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(10),
                   bottomLeft: Radius.circular(10),
                 ),
                 image: DecorationImage(
                     image: NetworkImage(
-                      'https://www.sabornamesa.com.br/media/k2/items/cache/b9ad772005653afce4d4bd46c2efe842_XL.jpg',
-                    ),
+                        'http://192.168.0.112:8080/images${product.image}'),
                     fit: BoxFit.cover),
               ),
             ),
@@ -34,12 +38,13 @@ class ProductTile extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: const [
+                children: [
                   Text(
-                    'X-TUDAO',
+                    product.name,
                     style: VakinhaUI.textBold,
                   ),
-                  Text(r'R$ 200,00'),
+                  // Text('R\$ ${product.price}'),
+                  Text(FormatterHelper.formatCurrency(product.price)),
                 ],
               ),
             ))
