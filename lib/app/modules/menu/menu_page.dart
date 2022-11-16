@@ -1,3 +1,4 @@
+import 'package:adf_vakinha_burger_mobile/app/modules/menu/widgets/product_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -8,8 +9,10 @@ class MenuPage extends GetView<MenuController> {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text('MENU'),
-    );
+    return ListView.builder(
+        itemCount: 6,
+        itemBuilder: (context, index) {
+          return const ProductTile();
+        });
   }
 }
