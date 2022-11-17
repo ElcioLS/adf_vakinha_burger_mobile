@@ -2,8 +2,11 @@ import 'package:adf_vakinha_burger_mobile/app/core/services/auth_service.dart';
 import 'package:adf_vakinha_burger_mobile/app/core/services/shopping_cart_service.dart';
 import 'package:adf_vakinha_burger_mobile/app/modules/menu/menu_bindings.dart';
 import 'package:adf_vakinha_burger_mobile/app/modules/menu/menu_page.dart';
+import 'package:adf_vakinha_burger_mobile/app/modules/order/shopping_cart/shopping_cart_bindings.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../order/shopping_cart/shopping_cart_page.dart';
 
 class HomeController extends GetxController {
   static const NAVIGATOR_KEY = 1;
@@ -41,7 +44,14 @@ class HomeController extends GetxController {
       );
     }
 
-    if (settings.name == '/order/shopping_cart') {}
+    if (settings.name == '/order/shopping_cart') {
+      return GetPageRoute(
+        settings: settings,
+        page: () => const ShoppingCartPage(),
+        binding: ShoppingCartBindings(),
+        transition: Transition.fadeIn,
+      );
+    }
     return null;
   }
 }
