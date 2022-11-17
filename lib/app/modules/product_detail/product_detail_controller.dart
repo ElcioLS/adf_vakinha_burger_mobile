@@ -1,3 +1,4 @@
+import 'package:adf_vakinha_burger_mobile/app/core/services/shopping_cart_service.dart';
 import 'package:adf_vakinha_burger_mobile/app/models/product_model.dart';
 import 'package:get/get.dart';
 
@@ -5,10 +6,16 @@ class ProductDetailController extends GetxController {
   final _product = Rx<ProductModel>(Get.arguments);
   final _totalPrice = 0.0.obs;
   final _quantity = 1.obs;
+  final ShoppingCartService _shoppingCartService;
+  final _alreadyAdded = false.obs;
+
+  ProductDetailController({required ShoppingCartService shoppingCartService})
+      : _shoppingCartService = shoppingCartService;
 
   ProductModel get product => _product.value;
   double get totalPrice => _totalPrice.value;
   int get quantity => _quantity.value;
+  bool get alreadyAdded => _alreadyAdded.value;
 
   @override
   void onInit() {
@@ -18,6 +25,12 @@ class ProductDetailController extends GetxController {
     ever<int>(_quantity, (quantity) {
       _totalPrice(product.price * quantity);
     });
+    final productShoppingCart = _shoppingCartService.getById(product.id);
+
+    if (productShoppingCart != null) {
+      _quantity(productShoppingCart.quantity);
+      _alreadyAdded(true);
+    }
   }
 
   void addProduct() {
@@ -28,5 +41,13 @@ class ProductDetailController extends GetxController {
     if (_quantity.value > 1) {
       _quantity.value -= 1;
     }
+  }
+
+  void addProductInShoppingCart() {
+    _shoppingCartService.addAndRemoveProductInShoppingCart(
+      product,
+      quantity: quantity,
+    );
+    Get.back();
   }
 }
