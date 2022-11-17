@@ -1,5 +1,6 @@
 import 'package:adf_vakinha_burger_mobile/app/core/ui/vakinha_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../core/ui/formatter_helper.dart';
 import '../../../models/product_model.dart';
@@ -12,7 +13,9 @@ class ProductTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Get.toNamed('/product_detail', arguments: product);
+      },
       child: Container(
         margin: const EdgeInsets.all(10),
         height: 80,
@@ -27,7 +30,8 @@ class ProductTile extends StatelessWidget {
                 ),
                 image: DecorationImage(
                     image: NetworkImage(
-                        'http://192.168.0.112:8080/images${product.image}'),
+                      'http://192.168.0.112:8080/images${product.image}',
+                    ),
                     fit: BoxFit.cover),
               ),
             ),
