@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 class UserModel {
   final int id;
   final String name;
@@ -15,7 +14,7 @@ class UserModel {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
+    return {
       'id': id,
       'name': name,
       'email': email,
@@ -25,7 +24,7 @@ class UserModel {
 
   factory UserModel.fromMap(Map<String, dynamic> map) {
     return UserModel(
-      id: map['id'],
+      id: map['id']?.toInt() ?? 0,
       name: map['name'] ?? '',
       email: map['email'] ?? '',
       password: map['password'] ?? '',
@@ -35,5 +34,5 @@ class UserModel {
   String toJson() => json.encode(toMap());
 
   factory UserModel.fromJson(String source) =>
-      UserModel.fromMap(json.decode(source) as Map<String, dynamic>);
+      UserModel.fromMap(json.decode(source));
 }

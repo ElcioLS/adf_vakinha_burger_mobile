@@ -30,10 +30,10 @@ class ProductDetailPage extends GetView<ProductDetailController> {
                   Container(
                     width: context.width,
                     height: context.heightTransformer(reducedBy: 60),
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       image: DecorationImage(
                         image: NetworkImage(
-                          'http://192.168.0.112:8080/images/xtudo.jpeg',
+                          'http://192.168.0.112:8080/images${controller.product.image}',
                         ),
                         fit: BoxFit.cover,
                       ),
@@ -43,7 +43,7 @@ class ProductDetailPage extends GetView<ProductDetailController> {
                   Padding(
                     padding: const EdgeInsets.all(20),
                     child: Text(
-                      'X-TUDAO',
+                      controller.product.name,
                       style: context.textTheme.headline4!.copyWith(
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
@@ -54,17 +54,20 @@ class ProductDetailPage extends GetView<ProductDetailController> {
                   Padding(
                     padding: const EdgeInsets.only(left: 20),
                     child: Text(
-                      'X-TUDAO',
+                      controller.product.description,
                       style: context.textTheme.bodyText2!,
                     ),
                   ),
-                  const SizedBox(height: 10),
-                  PlusMinusBox(
-                    // label: 'X BACON BURGER',
-                    minusCallBack: () {},
-                    plusCallBack: () {},
-                    price: 6.00,
-                    quantity: 1,
+                  const SizedBox(height: 20),
+                  Obx(
+                    () {
+                      return PlusMinusBox(
+                        minusCallBack: controller.removeProduct,
+                        plusCallBack: controller.addProduct,
+                        price: controller.product.price,
+                        quantity: controller.quantity,
+                      );
+                    },
                   ),
                   const Divider(),
                   ListTile(
@@ -72,9 +75,15 @@ class ProductDetailPage extends GetView<ProductDetailController> {
                       'Total',
                       style: VakinhaUI.textBold,
                     ),
-                    trailing: Text(
-                      FormatterHelper.formatCurrency(200.0),
-                      style: VakinhaUI.textBold,
+                    trailing: Obx(
+                      () {
+                        return Text(
+                          FormatterHelper.formatCurrency(
+                            controller.totalPrice,
+                          ),
+                          style: VakinhaUI.textBold,
+                        );
+                      },
                     ),
                   ),
                   const SizedBox(height: 10),
