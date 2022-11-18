@@ -129,7 +129,9 @@ class ShoppingCartPage extends GetView<ShoppingCartController> {
                             width: context.widthTransformer(reducedBy: 10),
                             child: VakinhaButton(
                               label: 'FINALIZAR',
-                              onPressed: () {},
+                              onPressed: () {
+                                Get.toNamed('/orders/finished');
+                              },
                             ),
                           ),
                         ),
