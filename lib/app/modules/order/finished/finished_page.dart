@@ -1,9 +1,12 @@
 import 'package:adf_vakinha_burger_mobile/app/core/ui/widgets/vakinha_button.dart';
+import 'package:adf_vakinha_burger_mobile/app/models/order_pix.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class FinishedPage extends StatelessWidget {
-  const FinishedPage({Key? key}) : super(key: key);
+  final OrderPix _orderPix = Get.arguments;
+
+  FinishedPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +40,9 @@ class FinishedPage extends StatelessWidget {
                   width: context.widthTransformer(reducedBy: 30),
                   child: VakinhaButton(
                     label: 'PIX',
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.toNamed('/order/pix', arguments: _orderPix);
+                    },
                     color: context.theme.primaryColorDark,
                   ),
                 ),

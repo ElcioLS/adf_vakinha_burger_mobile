@@ -8,7 +8,9 @@ import 'package:validatorless/validatorless.dart';
 import './shopping_cart_controller.dart';
 
 class ShoppingCartPage extends GetView<ShoppingCartController> {
-  const ShoppingCartPage({Key? key}) : super(key: key);
+  final formKey = GlobalKey<FormState>();
+
+  ShoppingCartPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +44,7 @@ class ShoppingCartPage extends GetView<ShoppingCartController> {
                     ),
                   ),
                   child: Form(
+                    key: formKey,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -130,7 +133,14 @@ class ShoppingCartPage extends GetView<ShoppingCartController> {
                             child: VakinhaButton(
                               label: 'FINALIZAR',
                               onPressed: () {
-                                Get.toNamed('/orders/finished');
+                                // final formValid =
+                                //     formKey.currentState?.validate() ?? false;
+                                // if (formValid) {
+                                //   controller.createOrder();
+                                // }
+                                Get.offNamed(
+                                  '/order/pix',
+                                );
                               },
                             ),
                           ),
