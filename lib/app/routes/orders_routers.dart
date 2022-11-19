@@ -13,7 +13,7 @@ class OrdersRouters {
     ),
     GetPage(
       name: '/order/pix',
-      page: () => const PixPage(),
+      page: () => PixPage(),
     ),
   ];
 }

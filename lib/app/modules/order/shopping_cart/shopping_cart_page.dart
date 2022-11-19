@@ -24,27 +24,27 @@ class ShoppingCartPage extends GetView<ShoppingCartController> {
                 minWidth: constraints.maxWidth,
               ),
               child: IntrinsicHeight(
-                child: Visibility(
-                  visible: controller.products.isNotEmpty,
-                  replacement: Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Carrinho',
-                          style: context.textTheme.headline6?.copyWith(
-                            fontWeight: FontWeight.bold,
-                            color: context.theme.primaryColorDark,
+                child: Form(
+                  key: formKey,
+                  child: Visibility(
+                    visible: controller.products.isNotEmpty,
+                    replacement: Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Carrinho',
+                            style: context.textTheme.headline6?.copyWith(
+                              fontWeight: FontWeight.bold,
+                              color: context.theme.primaryColorDark,
+                            ),
                           ),
-                        ),
-                        const SizedBox(height: 10),
-                        const Text('Seu carrinho está vazio!'),
-                      ],
+                          const SizedBox(height: 10),
+                          const Text('Seu carrinho está vazio!'),
+                        ],
+                      ),
                     ),
-                  ),
-                  child: Form(
-                    key: formKey,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -133,14 +133,13 @@ class ShoppingCartPage extends GetView<ShoppingCartController> {
                             child: VakinhaButton(
                               label: 'FINALIZAR',
                               onPressed: () {
-                                // final formValid =
-                                //     formKey.currentState?.validate() ?? false;
-                                // if (formValid) {
-                                //   controller.createOrder();
-                                // }
-                                Get.offNamed(
-                                  '/order/pix',
-                                );
+                                // Get.toNamed('/order/pix');
+
+                                final formValid =
+                                    formKey.currentState?.validate() ?? false;
+                                if (formValid) {
+                                  controller.createOrder();
+                                }
                               },
                             ),
                           ),

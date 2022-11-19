@@ -9,6 +9,7 @@ class ShoppingCartBindings implements Bindings {
   void dependencies() {
     Get.lazyPut<OrderRepository>(
         () => OrderRepositoryImpl(restClient: Get.find()));
+
     Get.put(ShoppingCartController(
       authService: Get.find(),
       shoppingCartService: Get.find(),

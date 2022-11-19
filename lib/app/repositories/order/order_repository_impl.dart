@@ -17,7 +17,7 @@ class OrderRepositoryImpl implements OrderRepository {
     final result = await _restClient.post('/order/', {
       'userId': order.userId,
       'cpf': order.cpf,
-      'addrress': order.address,
+      'address': order.address,
       'items': order.items
           .map((shoppingCart) => {
                 'quantity': shoppingCart.quantity,

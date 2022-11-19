@@ -30,7 +30,7 @@ class ProductTile extends StatelessWidget {
                 ),
                 image: DecorationImage(
                     image: NetworkImage(
-                      'http://192.168.0.112:8080/images${product.image}',
+                      'http://192.168.0.5:8080/images${product.image}',
                     ),
                     fit: BoxFit.cover),
               ),
