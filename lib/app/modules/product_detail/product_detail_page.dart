@@ -33,7 +33,7 @@ class ProductDetailPage extends GetView<ProductDetailController> {
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         image: NetworkImage(
-                          'http://192.168.0.5:8080/images${controller.product.image}',
+                          'http://bigburguer.cloudns.nz:8080/images${controller.product.image}',
                         ),
                         fit: BoxFit.cover,
                       ),

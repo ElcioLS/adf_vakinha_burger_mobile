@@ -7,6 +7,8 @@ class RestClient extends GetConnect {
   final _backendBaseUrl = 'http://bigburguer.cloudns.nz:8080';
 
   RestClient() {
+    httpClient.timeout = const Duration(seconds: 30);
+    httpClient.maxAuthRetries = 3;
     httpClient.baseUrl = _backendBaseUrl;
   }
 }

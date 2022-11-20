@@ -53,6 +53,7 @@ class ShoppingCartController extends GetxController {
       address: _address.value,
       items: products,
     );
+
     var orderPix = await _orderRepository.createOrder(order);
     orderPix = orderPix.copyWith(totalValue: totalValue);
     clear();
